@@ -1,114 +1,165 @@
-* {
-    margin: 0;
+*,
+*::after,
+*::before {
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --dark-color: #000;
+    --fl-speed: 0.8s;
+    --petal-color: #ff69b4;
+    --petal-dark: #ff1493;
+    --stem-color: #228B22;
+    --leaf-color: #32CD32;
+    --light-color: #ffff00;
+}
+
 body {
-    background: #000;
     min-height: 100vh;
+    background-color: var(--dark-color);
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    perspective: 1000px;
+}
+
+.night {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-color);
+    filter: blur(0.1vmin);
 }
 
 .flowers {
     position: relative;
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .flower {
-    position: relative;
-    height: 400px;
+    position: absolute;
+    bottom: 10vmin;
     transform-origin: bottom center;
-    animation: growFlower 2s ease-out forwards;
+    animation: growing-flower 2s ease-out forwards;
+    z-index: 10;
     opacity: 0;
 }
 
-/* Blooms */
-.bloom {
+.flower--1 {
+    left: calc(50% - 2vmin);
+}
+
+.flower--2 {
+    left: calc(50% - 12vmin);
+    transform: scale(0.9);
+    animation-delay: 0.3s;
+}
+
+.flower--3 {
+    left: calc(50% + 8vmin);
+    transform: scale(0.8);
+    animation-delay: 0.6s;
+}
+
+.flower__leafs {
     position: absolute;
-    width: 50px;
-    height: 30px;
-    background: #ff69b4;
-    border-radius: 50%;
-    transform-origin: center;
-}
-
-.bloom__inner {
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: inherit;
-    opacity: 0.8;
-}
-
-.bloom--top {
-    right: -10px;
     top: 0;
-}
-
-.bloom--middle {
-    right: -5px;
-    top: 80px;
-    transform: scale(0.85);
-    opacity: 0.9;
-}
-
-.bloom--bottom {
-    right: 0;
-    top: 160px;
-    transform: scale(0.7);
-    opacity: 0.8;
-}
-
-/* Stem */
-.stem {
-    position: absolute;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, #228B22, #006400);
-    right: 10px;
-    transform-origin: bottom center;
-    animation: growStem 2s ease-out forwards;
-}
-
-/* Leaf */
-.leaf {
-    position: absolute;
-    width: 40px;
-    height: 20px;
-    background: #00a86b;
-    border-radius: 100px 0;
-    right: 4px;
-    top: 50%;
-    transform: rotate(-30deg);
-    transform-origin: right;
-}
-
-/* Light effects */
-.light {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #ffff00;
-    border-radius: 50%;
+    left: 0;
+    transform-origin: bottom;
+    animation: blooming 2s ease-out forwards;
+    animation-delay: 1.5s;
     opacity: 0;
-    filter: blur(1px);
 }
 
-.light--1 { animation: floatLight 3s infinite 0.5s; top: -10px; left: 0; }
-.light--2 { animation: floatLight 3s infinite 1s; top: -5px; left: 10px; }
-.light--3 { animation: floatLight 3s infinite 1.5s; top: 0; left: -10px; }
-.light--4 { animation: floatLight 3s infinite 2s; top: 5px; left: 5px; }
+.flower__leaf {
+    position: absolute;
+    width: 8vmin;
+    height: 14vmin;
+    background-image: linear-gradient(to top, var(--petal-color), var(--petal-dark));
+    border-radius: 100% 0% 50% 50% / 100% 25% 75% 0%;
+    transform-origin: bottom center;
+    opacity: 0.9;
+    box-shadow: 0 0 2vmin rgba(255, 255, 255, 0.3);
+}
 
-/* Animations */
-@keyframes growFlower {
+.flower__leaf--1 { transform: rotate(0deg); }
+.flower__leaf--2 { transform: rotate(90deg); }
+.flower__leaf--3 { transform: rotate(180deg); }
+.flower__leaf--4 { transform: rotate(270deg); }
+
+.flower__white-circle {
+    position: absolute;
+    width: 3vmin;
+    height: 3vmin;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.flower__line {
+    width: 2vmin;
+    height: 0;
+    background-image: linear-gradient(to right, 
+        transparent 0.3vmin, 
+        var(--stem-color) 0.3vmin 1.7vmin,
+        transparent 1.7vmin
+    );
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: grow-line 2s ease-out forwards;
+}
+
+.flower__line__leaf {
+    position: absolute;
+    width: 10vmin;
+    height: 5vmin;
+    background-color: var(--leaf-color);
+    border-radius: 100% 0;
+    top: 20%;
+}
+
+.flower__line__leaf--1 {
+    right: 0;
+    transform: rotate(-30deg);
+}
+
+.flower__line__leaf--2 {
+    right: -8vmin;
+    top: 45%;
+    transform: rotate(-70deg);
+}
+
+.flower__light {
+    position: absolute;
+    width: 1vmin;
+    height: 1vmin;
+    background-color: var(--light-color);
+    border-radius: 50%;
+    filter: blur(0.2vmin);
+    animation: light-particle 4s linear infinite;
+    opacity: 0;
+}
+
+.flower__light--1 { left: -2vmin; animation-delay: 1s; }
+.flower__light--2 { left: 3vmin; animation-delay: 0.5s; }
+.flower__light--3 { left: -6vmin; animation-delay: 0.3s; }
+.flower__light--4 { left: 6vmin; animation-delay: 0.9s; }
+.flower__light--5 { left: -1vmin; animation-delay: 1.5s; }
+.flower__light--6 { left: -4vmin; animation-delay: 3s; }
+.flower__light--7 { left: 3vmin; animation-delay: 2s; }
+.flower__light--8 { left: -6vmin; animation-delay: 3.5s; }
+
+@keyframes growing-flower {
     0% {
         opacity: 0;
         transform: scale(0) translateY(200px);
@@ -119,58 +170,55 @@ body {
     }
 }
 
-@keyframes growStem {
+@keyframes blooming {
     0% {
-        height: 0;
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
     }
     100% {
-        height: 100%;
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
-@keyframes floatLight {
+@keyframes grow-line {
+    0% { height: 0; }
+    100% { height: 30vmin; }
+}
+
+@keyframes light-particle {
     0% {
         opacity: 0;
         transform: translateY(0);
     }
-    50% {
+    25% {
         opacity: 1;
-        transform: translateY(-20px);
+        transform: translateY(-20px) translateX(-10px);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-40px) translateX(10px);
+    }
+    75% {
+        opacity: 0.25;
+        transform: translateY(-60px) translateX(-10px);
     }
     100% {
         opacity: 0;
-        transform: translateY(-40px);
+        transform: translateY(-80px);
     }
 }
 
-/* Animation control */
 .not-loaded * {
     animation-play-state: paused !important;
 }
 
-/* Subtle movement */
-.flower {
-    animation: sway 4s ease-in-out infinite;
-}
-
-@keyframes sway {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    50% {
-        transform: rotate(2deg);
-    }
-}
-
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
     .flower {
         transform: scale(0.8);
-    }
-}
-
-@media (max-width: 480px) {
-    .flower {
-        transform: scale(0.6);
     }
 }
