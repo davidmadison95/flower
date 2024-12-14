@@ -3,177 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circular Flower Garden</title>
+    <title>Layered Flower Garden</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="not-loaded">
     <div class="night"></div>
     <div class="flowers">
-        <!-- Center Flower -->
-        <div class="flower flower--1">
-            <div class="flower__leafs flower__leafs--1">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
+        <!-- Back Layer -->
+        <div class="flower-layer" style="transform: scale(0.8) translateY(5vmin)">
+            <!-- Back flower 1 -->
+            <div class="flower flower--3" style="transform: translate(-45vmin, -10vmin) rotate(-5deg);">
+                <div class="flower__leafs flower__leafs--3">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
             </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
+
+            <!-- Back flower 2 -->
+            <div class="flower flower--2" style="transform: translate(45vmin, -10vmin) rotate(5deg);">
+                <div class="flower__leafs flower__leafs--2">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
             </div>
         </div>
 
-        <!-- Circle of 8 Flowers -->
-        <!-- Flower at 0 degrees -->
-        <div class="flower flower--2" style="transform: translateX(30vmin) rotate(-5deg);">
-            <!-- Same internal structure as center flower -->
-            <div class="flower__leafs flower__leafs--2">
-                <!-- Copy the internal structure from center flower -->
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
+        <!-- Middle Layer -->
+        <div class="flower-layer">
+            <!-- Center flower -->
+            <div class="flower flower--1">
+                <div class="flower__leafs flower__leafs--1">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
             </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
+
+            <!-- Side flowers -->
+            <div class="flower flower--2" style="transform: translate(35vmin, 0) rotate(-5deg);">
+                <div class="flower__leafs flower__leafs--2">
+                    <!-- Same structure as center flower -->
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
+            </div>
+
+            <div class="flower flower--3" style="transform: translate(-35vmin, 0) rotate(5deg);">
+                <!-- Same structure as above -->
+                <div class="flower__leafs flower__leafs--3">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
             </div>
         </div>
 
-        <!-- Flower at 45 degrees -->
-        <div class="flower flower--3" style="transform: translate(25vmin, -15vmin) rotate(15deg);">
-            <!-- Same internal structure -->
-            <div class="flower__leafs flower__leafs--3">
-                <!-- Internal structure -->
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
+        <!-- Front Layer -->
+        <div class="flower-layer" style="transform: scale(1.1) translateY(-5vmin)">
+            <div class="flower flower--2" style="transform: translate(15vmin, 5vmin) rotate(-8deg);">
+                <!-- Same structure as above -->
+                <div class="flower__leafs flower__leafs--2">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
             </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
+
+            <div class="flower flower--3" style="transform: translate(-15vmin, 5vmin) rotate(8deg);">
+                <!-- Same structure as above -->
+                <div class="flower__leafs flower__leafs--3">
+                    <div class="flower__leaf flower__leaf--1"></div>
+                    <div class="flower__leaf flower__leaf--2"></div>
+                    <div class="flower__leaf flower__leaf--3"></div>
+                    <div class="flower__leaf flower__leaf--4"></div>
+                    <div class="flower__white-circle"></div>
+                    <div class="flower__light flower__light--1"></div>
+                    <div class="flower__light flower__light--2"></div>
+                    <div class="flower__light flower__light--3"></div>
+                    <div class="flower__light flower__light--4"></div>
+                    <div class="flower__light flower__light--5"></div>
+                    <div class="flower__light flower__light--6"></div>
+                    <div class="flower__light flower__light--7"></div>
+                    <div class="flower__light flower__light--8"></div>
+                </div>
+                <div class="flower__line">
+                    <div class="flower__line__leaf flower__line__leaf--1"></div>
+                    <div class="flower__line__leaf flower__line__leaf--2"></div>
+                    <div class="flower__line__leaf flower__line__leaf--3"></div>
+                    <div class="flower__line__leaf flower__line__leaf--4"></div>
+                </div>
             </div>
         </div>
 
-        <!-- Flower at 90 degrees -->
-        <div class="flower flower--2" style="transform: translate(0, -25vmin) rotate(0deg);">
-            <!-- Same internal structure -->
-            <div class="flower__leafs flower__leafs--2">
-                <!-- Internal structure -->
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
-            </div>
-        </div>
-
-        <!-- Continue with flowers at 135, 180, 225, 270, and 315 degrees -->
-        <!-- Copy and adjust transform values for each position -->
-        <!-- For example: -->
-        <div class="flower flower--3" style="transform: translate(-25vmin, -15vmin) rotate(-15deg);">
-            <!-- Same internal structure -->
-            <div class="flower__leafs flower__leafs--3">
-                <!-- Internal structure -->
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
-            </div>
-        </div>
-
-        <div class="flower flower--2" style="transform: translateX(-30vmin) rotate(5deg);">
-            <!-- Same internal structure -->
-            <div class="flower__leafs flower__leafs--2">
-                <!-- Internal structure -->
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__white-circle"></div>
-                <div class="flower__light flower__light--1"></div>
-                <div class="flower__light flower__light--2"></div>
-                <div class="flower__light flower__light--3"></div>
-                <div class="flower__light flower__light--4"></div>
-                <div class="flower__light flower__light--5"></div>
-                <div class="flower__light flower__light--6"></div>
-                <div class="flower__light flower__light--7"></div>
-                <div class="flower__light flower__light--8"></div>
-            </div>
-            <div class="flower__line">
-                <div class="flower__line__leaf flower__line__leaf--1"></div>
-                <div class="flower__line__leaf flower__line__leaf--2"></div>
-                <div class="flower__line__leaf flower__line__leaf--3"></div>
-                <div class="flower__line__leaf flower__line__leaf--4"></div>
-            </div>
-        </div>
-
-        <!-- Add the remaining grass and decorative elements -->
+        <!-- Grass -->
         <div class="growing-grass">
-            <!-- Grass structure -->
             <div class="flower__grass flower__grass--1">
                 <div class="flower__grass--top"></div>
                 <div class="flower__grass--bottom"></div>
