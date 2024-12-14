@@ -11,12 +11,12 @@
     --fl-speed: 0.8s;
     
     /* Flower colors */
-    --flower1-dark: #FF0033;
-    --flower1-light: #FF69B4;
-    --flower2-dark: #FF1493;
-    --flower2-light: #FFB6C1;
-    --flower3-dark: #C71585;
-    --flower3-light: #FFC0CB;
+    --flower1-dark: #FF0033;  /* Deep red */
+    --flower1-light: #FF69B4; /* Hot pink */
+    --flower2-dark: #FF1493;  /* Deep pink */
+    --flower2-light: #FFB6C1; /* Light pink */
+    --flower3-dark: #C71585;  /* Medium violet red */
+    --flower3-light: #FFC0CB; /* Pink */
     
     /* Stem colors */
     --stem-dark: #006400;
@@ -58,39 +58,27 @@ body {
     will-change: transform;
 }
 
-/* Back layer */
+/* Layer depths */
 .flower-layer:nth-child(1) {
     transform: scale(0.7) translateY(10vmin) translateZ(-20vmin);
 }
 
-.flower-layer:nth-child(1) .flower {
-    animation-duration: 6s;
-    filter: blur(0.5px);
-}
-
-/* Middle layer */
 .flower-layer:nth-child(2) {
     transform: scale(0.9) translateY(5vmin) translateZ(-10vmin);
 }
 
-.flower-layer:nth-child(2) .flower {
-    animation-duration: 5s;
-}
-
-/* Front layer */
 .flower-layer:nth-child(3) {
     transform: scale(1.1) translateY(0) translateZ(0);
 }
 
-.flower-layer:nth-child(3) .flower {
-    animation-duration: 4s;
-}
-
+/* Base flower styles */
 .flower {
     position: absolute;
     bottom: 10vmin;
     transform-origin: bottom center;
     z-index: 10;
+    opacity: 0;
+    animation: grow-flower 2s ease-out forwards var(--delay, 0s);
 }
 
 /* Flower variations */
@@ -109,19 +97,10 @@ body {
 /* Flower components */
 .flower__leafs {
     position: relative;
-    animation: blooming-flower 2s backwards;
-}
-
-.flower__leafs::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translate(-50%, -100%);
-    width: 8vmin;
-    height: 8vmin;
-    background-color: var(--flower1-light);
-    filter: blur(10vmin);
+    opacity: 0;
+    transform: scale(0);
+    animation: bloom-flower 1s ease-out forwards;
+    animation-delay: calc(var(--delay, 0s) + 1.5s);
 }
 
 .flower__leaf {
@@ -132,36 +111,24 @@ body {
     height: 11vmin;
     border-radius: 51% 49% 47% 53% / 44% 45% 55% 69%;
     transform-origin: bottom center;
-    opacity: 0.9;
+    opacity: 0;
+    animation: grow-leaf 1.5s ease-out forwards;
+    animation-delay: calc(var(--delay, 0s) + var(--leaf-delay, 0s));
     box-shadow: inset 0 0 2vmin rgba(255, 255, 255, 0.5);
 }
 
-/* Layer-specific animations */
-@keyframes back-layer-move {
-    0%, 100% {
-        transform: rotate(-2deg) translateY(0);
-    }
-    50% {
-        transform: rotate(2deg) translateY(-5px);
-    }
-}
-
-@keyframes middle-layer-move {
-    0%, 100% {
-        transform: rotate(3deg) translateY(0);
-    }
-    50% {
-        transform: rotate(-3deg) translateY(-10px);
-    }
-}
-
-@keyframes front-layer-move {
-    0%, 100% {
-        transform: rotate(-4deg) translateY(0);
-    }
-    50% {
-        transform: rotate(4deg) translateY(-15px);
-    }
+.flower__line {
+    height: 0;
+    width: 1.5vmin;
+    background-image: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0.2),
+        transparent,
+        rgba(255, 255, 255, 0.2)
+    ),
+    linear-gradient(to top, transparent 10%, var(--stem-dark), var(--stem-light));
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+    animation: grow-stem 1.5s ease-out forwards var(--delay, 0s);
 }
 
 /* Light effects */
@@ -172,25 +139,71 @@ body {
     height: 1vmin;
     border-radius: 50%;
     filter: blur(0.2vmin);
-    animation: light-ans 4s linear infinite backwards;
+    opacity: 0;
+    animation: light-ans 4s linear infinite;
+    animation-delay: calc(var(--delay, 0s) + 2s);
 }
 
-.flower-layer:nth-child(1) .flower__light {
-    animation-duration: 5s;
-    opacity: 0.7;
+/* Growing animations */
+@keyframes grow-flower {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.flower-layer:nth-child(2) .flower__light {
-    animation-duration: 4s;
-    opacity: 0.85;
+@keyframes grow-stem {
+    0% {
+        height: 0;
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        height: 55vmin;
+        transform: rotate(0deg);
+    }
 }
 
-.flower-layer:nth-child(3) .flower__light {
-    animation-duration: 3s;
-    opacity: 1;
+@keyframes bloom-flower {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(15deg);
+    }
+    75% {
+        transform: scale(0.9) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
 }
 
-/* Animation keyframes */
+@keyframes grow-leaf {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-90deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
 @keyframes light-ans {
     0% {
         opacity: 0;
@@ -213,20 +226,41 @@ body {
     }
 }
 
-@keyframes blooming-flower {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
 /* Grass animations */
 .growing-grass {
-    animation: growing-grass-ans 1s 2s backwards;
+    opacity: 0;
+    animation: grow-grass 1.5s ease-out forwards;
+    animation-delay: 0.5s;
 }
 
-@keyframes growing-grass-ans {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
+@keyframes grow-grass {
+    0% {
+        opacity: 0;
+        transform: scale(0) translateY(100%);
+    }
+    50% {
+        transform: scale(0.8) translateY(50%);
+    }
+    75% {
+        transform: scale(1.1) translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Wind effect */
+@keyframes wind-effect {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(3deg);
+    }
 }
 
 /* Animation state control */
